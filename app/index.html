@@ -1,0 +1,22 @@
+<html>
+<body>
+
+<input id="m">
+<button onclick="s()">Send</button>
+
+<p id="r"></p>
+
+<script>
+function s() {
+    fetch("http://127.0.0.1:5000/chat", {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({message: m.value})
+    })
+    .then(x => x.json())
+    .then(x => r.innerText = x.response);
+}
+</script>
+
+</body>
+</html>
